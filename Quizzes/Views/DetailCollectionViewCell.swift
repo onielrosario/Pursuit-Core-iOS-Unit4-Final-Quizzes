@@ -9,7 +9,101 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
+   
+    lazy var DetailCollectionViewLabelImage: UIImageView = {
+        let imageview = UIImageView()
+        backgroundColor = .white
+        return imageview
+    }()
     
+    lazy var DetailCollectionViewTextviewsImage: UIImageView = {
+        let imageview = UIImageView()
+        backgroundColor = .white
+        return imageview
+    }()
+    
+    lazy var DetailCellTextViewOne: UITextView = {
+        let myTextView = UITextView()
+        myTextView.textColor = .white
+        myTextView.backgroundColor = .gray
+        myTextView.textAlignment = .center
+        myTextView.text = "Facts #1..."
+        myTextView.isEditable = false
+        myTextView.isSelectable = false
+        return myTextView
+    }()
+    
+    lazy var DetailCellTextViewTwo: UITextView = {
+        let myTextView = UITextView()
+        myTextView.textColor = .black
+        myTextView.textAlignment = .center
+        myTextView.text = "Facts #2..."
+        myTextView.isEditable = false
+        myTextView.isSelectable = false
+        return myTextView
+    }()
+    
+    lazy var DetailTitleLabel: UILabel = {
+        let mylabel = UILabel()
+        mylabel.textAlignment = .center
+        mylabel.text = "Quiz title..."
+        mylabel.textColor = .black
+        return mylabel
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+        backgroundColor = .white
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func commonInit() {
+        addImageConstrains()
+        addTextViewImageConstrains()
+        addLabelConstrains()
+        addTexviewsConstrains()
+    }
+    
+    private func addImageConstrains() {
+        addSubview(DetailCollectionViewLabelImage)
+        DetailCollectionViewLabelImage.translatesAutoresizingMaskIntoConstraints = false
+        DetailCollectionViewLabelImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        DetailCollectionViewLabelImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+    }
+    
+    private func addTextViewImageConstrains() {
+        addSubview(DetailCollectionViewTextviewsImage)
+        DetailCollectionViewTextviewsImage.translatesAutoresizingMaskIntoConstraints = false
+        DetailCollectionViewTextviewsImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        DetailCollectionViewTextviewsImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+    }
+    
+    private func addLabelConstrains() {
+        addSubview(DetailTitleLabel)
+        DetailTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        DetailTitleLabel.centerXAnchor.constraint(equalTo: DetailCollectionViewLabelImage.centerXAnchor).isActive = true
+        DetailTitleLabel.centerYAnchor.constraint(equalTo: DetailCollectionViewLabelImage.centerYAnchor).isActive = true
+    }
+    
+    private func addTexviewsConstrains() {
+        addSubview(DetailCellTextViewOne)
+        DetailCellTextViewOne.translatesAutoresizingMaskIntoConstraints = false
+        DetailCellTextViewOne.centerXAnchor.constraint(equalTo: DetailCollectionViewTextviewsImage.centerXAnchor).isActive = true
+        DetailCellTextViewOne.centerYAnchor.constraint(equalTo: DetailCollectionViewTextviewsImage.centerYAnchor, constant: -50).isActive = true
+        DetailCellTextViewOne.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
+        DetailCellTextViewOne.heightAnchor.constraint(equalToConstant: 200)
+        addSubview(DetailCellTextViewTwo)
+        DetailCellTextViewTwo.translatesAutoresizingMaskIntoConstraints = false
+        DetailCellTextViewTwo.centerXAnchor.constraint(equalTo: DetailCellTextViewOne.centerXAnchor).isActive = true
+        DetailCellTextViewTwo.topAnchor.constraint(equalTo: DetailCellTextViewOne.bottomAnchor, constant: 20).isActive = true
+        DetailCellTextViewTwo.widthAnchor.constraint(equalTo: DetailCellTextViewOne.widthAnchor).isActive = true
+        DetailCellTextViewTwo.heightAnchor.constraint(lessThanOrEqualTo: DetailCellTextViewOne.heightAnchor).isActive = true
+    }
     
     
     

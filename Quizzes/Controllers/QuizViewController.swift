@@ -10,7 +10,6 @@ import UIKit
 
 class QuizViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
-    let detailView = QuizDetailView()
     private var quizes = [Quiz]() {
         didSet {
             DispatchQueue.main.async {
@@ -21,7 +20,6 @@ class QuizViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.addSubview(detailView)
     collectionView.register(QuizCell.self, forCellWithReuseIdentifier: "quizCell")
   
   }

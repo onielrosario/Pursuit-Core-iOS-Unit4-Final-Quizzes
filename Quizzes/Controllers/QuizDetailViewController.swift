@@ -9,10 +9,10 @@
 import UIKit
 
 class QuizDetailViewController: UIViewController {
-
+let detailView = QuizDetailView()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    self.view.addSubview(detailView)
     }
   
 
