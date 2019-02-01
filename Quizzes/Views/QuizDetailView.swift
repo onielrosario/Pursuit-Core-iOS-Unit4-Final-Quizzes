@@ -26,6 +26,7 @@ class QuizDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         CollectionViewUI()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

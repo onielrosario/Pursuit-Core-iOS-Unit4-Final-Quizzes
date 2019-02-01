@@ -12,19 +12,16 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var quizes = [Quiz]() {
         didSet {
-            DispatchQueue.main.async {
                 self.collectionView.reloadData()
-            }
         }
     }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    collectionView.register(QuizCell.self, forCellWithReuseIdentifier: "quizCell")
+    self.collectionView.dataSource = self
+    self.collectionView.delegate = self
   
   }
-
-
 }
 
 
@@ -39,5 +36,21 @@ extension QuizViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    
+}
+
+extension QuizViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return }
+        let DetailVC = QuizDetailViewController()
+        let quizFacts = quizes[indexPath.row]
+       
+    navigationController?.pushViewController(DetailVC, animated: true)
+        
+    }
+    
+    
+    
     
 }
