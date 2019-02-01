@@ -19,6 +19,7 @@ class SearchCell: UICollectionViewCell {
     lazy var searchQuizLabel: UILabel = {
         let mylabel = UILabel()
         mylabel.textAlignment = .center
+        mylabel.numberOfLines = 3
         mylabel.text = "Quiz title..."
         mylabel.textColor = .black
         return mylabel
@@ -60,6 +61,8 @@ class SearchCell: UICollectionViewCell {
         searchQuizLabel.translatesAutoresizingMaskIntoConstraints = false
         searchQuizLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         searchQuizLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        searchQuizLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        searchQuizLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     }
     
 }
