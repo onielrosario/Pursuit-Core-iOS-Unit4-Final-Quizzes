@@ -16,14 +16,46 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NTn-xl-lo3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NEc-yf-Jch">
+                                    <size key="itemSize" width="166" height="289"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0CF-OS-4WU">
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="289"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="166" height="289"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NTn-xl-lo3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QZR-ow-Mbt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NTn-xl-lo3" secondAttribute="trailing" id="YT2-Bc-cqT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NTn-xl-lo3" secondAttribute="bottom" id="Z83-Rn-Ox7"/>
+                            <constraint firstItem="NTn-xl-lo3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kv2-My-s7H"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Quizes" id="Mh3-5e-5AF"/>
+                    <connections>
+                        <outlet property="collectionView" destination="NTn-xl-lo3" id="3Qi-6m-Vj2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="-1174"/>
+            <point key="canvasLocation" x="1712.8" y="-1174.3628185907048"/>
         </scene>
         <!--Quiz-->
         <scene sceneID="WPc-eI-N5Z">
@@ -68,14 +100,56 @@
         <!--Create-->
         <scene sceneID="ugv-Sq-zkg">
             <objects>
-                <viewController id="348-Si-RAb" sceneMemberID="viewController">
+                <viewController id="348-Si-RAb" customClass="CreatorViewController" customModule="Quizzes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JzK-fY-wPr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter quiz title..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QG1-xF-cEp">
+                                <rect key="frame" x="11" y="94" width="353" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter fact #1..." translatesAutoresizingMaskIntoConstraints="NO" id="qMa-h8-AJx">
+                                <rect key="frame" x="11" y="134" width="353" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="d2L-XJ-x6U"/>
+                                </constraints>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter fact #2..." translatesAutoresizingMaskIntoConstraints="NO" id="HP7-JM-cT3">
+                                <rect key="frame" x="11" y="284" width="353" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HP7-JM-cT3" firstAttribute="width" secondItem="qMa-h8-AJx" secondAttribute="width" id="Nf1-9s-f8a"/>
+                            <constraint firstItem="HP7-JM-cT3" firstAttribute="centerX" secondItem="qMa-h8-AJx" secondAttribute="centerX" id="Q5B-kh-cwG"/>
+                            <constraint firstItem="ErZ-qg-DsN" firstAttribute="trailing" secondItem="QG1-xF-cEp" secondAttribute="trailing" constant="11" id="QXi-a2-2oy"/>
+                            <constraint firstItem="qMa-h8-AJx" firstAttribute="width" secondItem="QG1-xF-cEp" secondAttribute="width" id="Tpm-BH-1nI"/>
+                            <constraint firstItem="QG1-xF-cEp" firstAttribute="leading" secondItem="ErZ-qg-DsN" secondAttribute="leading" constant="11" id="aSR-fQ-hh1"/>
+                            <constraint firstItem="HP7-JM-cT3" firstAttribute="height" secondItem="qMa-h8-AJx" secondAttribute="height" id="aT2-Gu-QLo"/>
+                            <constraint firstItem="qMa-h8-AJx" firstAttribute="top" secondItem="QG1-xF-cEp" secondAttribute="bottom" constant="10" id="bt6-aY-Ft2"/>
+                            <constraint firstItem="qMa-h8-AJx" firstAttribute="centerX" secondItem="QG1-xF-cEp" secondAttribute="centerX" id="ivE-iA-sjV"/>
+                            <constraint firstItem="QG1-xF-cEp" firstAttribute="top" secondItem="ErZ-qg-DsN" secondAttribute="top" constant="30" id="mUN-lo-dDU"/>
+                            <constraint firstItem="HP7-JM-cT3" firstAttribute="top" secondItem="qMa-h8-AJx" secondAttribute="bottom" constant="20" id="w0S-8r-4YB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ErZ-qg-DsN"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create" id="DaU-Yh-xBN"/>
+                    <connections>
+                        <outlet property="FactTwoTextView" destination="HP7-JM-cT3" id="OOB-f9-ipW"/>
+                        <outlet property="TitleTextField" destination="QG1-xF-cEp" id="jIq-nm-4gY"/>
+                        <outlet property="factOneTextView" destination="qMa-h8-AJx" id="57c-P4-HTP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zFe-po-i70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,18 +158,50 @@
         <!--Search-->
         <scene sceneID="J3d-4w-WML">
             <objects>
-                <viewController id="3mU-Vs-njE" sceneMemberID="viewController">
+                <viewController id="3mU-Vs-njE" customClass="SearchViewController" customModule="Quizzes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r0f-uy-fPv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QZl-e7-Esy">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K9R-cb-EY4">
+                                    <size key="itemSize" width="375" height="231"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pGe-r6-DNM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QZl-e7-Esy" firstAttribute="top" secondItem="vRc-w7-zMD" secondAttribute="top" id="WN9-qU-Dcs"/>
+                            <constraint firstItem="vRc-w7-zMD" firstAttribute="bottom" secondItem="QZl-e7-Esy" secondAttribute="bottom" id="jjI-vg-yxi"/>
+                            <constraint firstItem="QZl-e7-Esy" firstAttribute="leading" secondItem="vRc-w7-zMD" secondAttribute="leading" id="wel-8U-hTa"/>
+                            <constraint firstItem="vRc-w7-zMD" firstAttribute="trailing" secondItem="QZl-e7-Esy" secondAttribute="trailing" id="yJc-hD-mkw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vRc-w7-zMD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="Jea-gJ-UNw"/>
+                    <connections>
+                        <outlet property="SearchCollectionView" destination="QZl-e7-Esy" id="jUY-rA-ge7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEh-43-qtO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="-484"/>
+            <point key="canvasLocation" x="1712.8" y="-484.40779610194909"/>
         </scene>
         <!--Search-->
         <scene sceneID="gQc-Pb-R0O">
@@ -138,11 +244,23 @@
         <!--User-->
         <scene sceneID="VSW-CI-Ytl">
             <objects>
-                <viewController id="KAL-YQ-C16" sceneMemberID="viewController">
+                <viewController id="KAL-YQ-C16" customClass="UserViewController" customModule="Quizzes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rJI-3y-kBc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hfg-LD-TI4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hfg-LD-TI4" firstAttribute="leading" secondItem="PcW-XC-5mw" secondAttribute="leading" id="Ryt-XE-eEO"/>
+                            <constraint firstItem="Hfg-LD-TI4" firstAttribute="top" secondItem="PcW-XC-5mw" secondAttribute="top" id="ZKi-U9-cXH"/>
+                            <constraint firstItem="PcW-XC-5mw" firstAttribute="bottom" secondItem="Hfg-LD-TI4" secondAttribute="bottom" id="vWp-iO-iTl"/>
+                            <constraint firstItem="PcW-XC-5mw" firstAttribute="trailing" secondItem="Hfg-LD-TI4" secondAttribute="trailing" id="yAD-nT-B4y"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PcW-XC-5mw"/>
                     </view>
                     <navigationItem key="navigationItem" title="User" id="Vn7-Qe-FwZ"/>
@@ -172,8 +290,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="create" width="37.5" height="37.5"/>
-        <image name="quiz" width="37.5" height="37.5"/>
+        <image name="create" width="22.5" height="22.5"/>
+        <image name="quiz" width="26.25" height="26.25"/>
         <image name="search" width="25" height="25"/>
         <image name="user" width="24" height="24"/>
     </resources>

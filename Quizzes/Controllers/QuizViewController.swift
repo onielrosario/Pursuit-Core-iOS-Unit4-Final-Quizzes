@@ -9,6 +9,8 @@
 import UIKit
 
 class QuizViewController: UIViewController {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
 
   override func viewDidLoad() {
     super.viewDidLoad()
