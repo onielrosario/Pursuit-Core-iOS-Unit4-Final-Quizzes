@@ -27,7 +27,8 @@ class QuizViewController: UIViewController {
 
 extension QuizViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return quizes.count
+//        return quizes.count
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,10 +43,9 @@ extension QuizViewController: UICollectionViewDataSource {
 
 extension QuizViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return }
+//       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return }
         let DetailVC = QuizDetailViewController()
-        let quizFacts = quizes[indexPath.row]
-       
+//        let quizFacts = quizes[indexPath.row]
     navigationController?.pushViewController(DetailVC, animated: true)
         
     }
