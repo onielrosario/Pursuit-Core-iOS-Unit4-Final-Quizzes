@@ -1,5 +1,5 @@
 //
-//  QuizModel.swift
+//  QuizFile.swift
 //  Quizzes
 //
 //  Created by Oniel Rosario on 2/1/19.
@@ -9,14 +9,9 @@
 import Foundation
 
 
-
-struct QuizModel: Codable {
-    let quiz: Quiz
-}
-
-struct Quiz: Codable {
+struct QuizFile: Codable {
     let id: String
-    let quizTitle: String
+    let name: String
     let facts: [String]
+    let dateAdded: Date
 }
-
