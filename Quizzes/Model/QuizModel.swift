@@ -10,10 +10,6 @@ import Foundation
 
 
 
-struct QuizModel: Codable {
-    let quiz: Quiz
-}
-
 struct Quiz: Codable {
     let id: String
     let quizTitle: String
