@@ -263,6 +263,10 @@
                         <viewLayoutGuide key="safeArea" id="PcW-XC-5mw"/>
                     </view>
                     <navigationItem key="navigationItem" title="User" id="Vn7-Qe-FwZ"/>
+                    <connections>
+                        <outlet property="userName" destination="BgT-e9-voG" id="Gg8-lk-ATA"/>
+                        <outlet property="userimage" destination="Cf2-Jp-uyb" id="9dl-Gy-WzM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IA4-cZ-EuA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

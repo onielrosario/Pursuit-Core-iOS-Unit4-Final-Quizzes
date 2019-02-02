@@ -45,7 +45,8 @@ extension QuizViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return }
         let DetailVC = QuizDetailViewController()
-//        let quizFacts = quizes[indexPath.row]
+        let quiz = quizes[indexPath.row]
+        DetailVC.quiz = quiz
     navigationController?.pushViewController(DetailVC, animated: true)
         
     }

@@ -63,8 +63,8 @@ class DetailCollectionViewCell: UICollectionViewCell {
     
     
     private func commonInit() {
-        addImageConstrains()
-        addTextViewImageConstrains()
+//        addImageConstrains()
+//        addTextViewImageConstrains()
         addLabelConstrains()
         addTexviewsConstrains()
     }
@@ -93,8 +93,8 @@ class DetailCollectionViewCell: UICollectionViewCell {
     private func addTexviewsConstrains() {
         addSubview(DetailCellTextViewOne)
         DetailCellTextViewOne.translatesAutoresizingMaskIntoConstraints = false
-        DetailCellTextViewOne.centerXAnchor.constraint(equalTo: DetailCollectionViewTextviewsImage.centerXAnchor).isActive = true
-        DetailCellTextViewOne.centerYAnchor.constraint(equalTo: DetailCollectionViewTextviewsImage.centerYAnchor, constant: -50).isActive = true
+        DetailCellTextViewOne.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        DetailCellTextViewOne.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50).isActive = true
         DetailCellTextViewOne.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3).isActive = true
         DetailCellTextViewOne.heightAnchor.constraint(equalToConstant: 200)
         addSubview(DetailCellTextViewTwo)
