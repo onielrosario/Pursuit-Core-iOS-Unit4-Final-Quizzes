@@ -14,9 +14,10 @@ class QuizDetailViewController: UIViewController {
 let detailView = QuizDetailView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(detailView)
         self.detailView.DetailCollectionView.dataSource = self
         self.detailView.DetailCollectionView.delegate = self
-    self.view.addSubview(detailView)
+//    self.view.addSubview(detailView)
         title = "\(quiz.name)"
     }
   

@@ -11,9 +11,9 @@ import UIKit
 class QuizDetailView: UIView {
     lazy var DetailCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: 200, height: 300)
+        layout.itemSize = CGSize.init(width: 350, height: 500)
         layout.sectionInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 20, right: 10)
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         let myCollectionView = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
         myCollectionView.backgroundColor = UIColor.clear.withAlphaComponent(0.5)
         myCollectionView.backgroundColor = .green

@@ -18,6 +18,7 @@ class QuizCell: UICollectionViewCell {
     lazy var quizTitleLabel: UILabel = {
         let mylabel = UILabel()
         mylabel.textAlignment = .center
+        mylabel.numberOfLines = 2
         mylabel.text = "Quiz title..."
         mylabel.textColor = .black
         return mylabel
@@ -52,6 +53,8 @@ super.init(coder: aDecoder)
         quizTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         quizTitleLabel.centerXAnchor.constraint(equalTo: quizCollectionViewLabelImage.centerXAnchor).isActive = true
         quizTitleLabel.centerYAnchor.constraint(equalTo: quizCollectionViewLabelImage.centerYAnchor).isActive = true
+        quizTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 11).isActive = true
+         quizTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -11).isActive = true
     }
 }
 

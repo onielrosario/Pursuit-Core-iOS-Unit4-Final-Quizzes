@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    private var index = 0
     let searchView = SearchQuizzesView()
     private var quizes = [Quiz]() {
         didSet {
@@ -22,6 +23,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 self.view.addSubview(searchView)
     searchView.SearchCollectionView.dataSource = self
+    searchView.SearchCollectionView.delegate = self
       getQuizes()
     }
     
@@ -34,10 +36,18 @@ self.view.addSubview(searchView)
             }
         }
     }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { alert in }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
 }
 
 
-extension SearchViewController: UICollectionViewDataSource {
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quizes.count
     }
@@ -49,7 +59,35 @@ extension SearchViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) is SearchCell else { return }
+       index = indexPath.row
+        saveQuiz()
+    }
     
+  
 }
 
 
+extension SearchViewController: SearchCellDelegate {
+    func updateQuizes(getQuizes: [QuizFile]) {
+    }
+    
+    func saveQuiz() {
+        let quiz = quizes[index]
+        guard !QuizDataManager.isSame(id: quiz.id) else {
+            showAlert(title: "Duplicate", message: "\(quiz.quizTitle) already exist in your Collection")
+            return
+        }
+        let date = Date.getISOTimestamp()
+        let createdAt = date.formatISODateString(dateFormat: "MMM d, yyyy")
+        let newQuiz = QuizFile.init(id: quiz.id, name: quiz.quizTitle, facts: quiz.facts, dateAdded: createdAt)
+        let savedQuiz = QuizDataManager.saveQuizesToDocumentsDirectory(newQuiz: newQuiz)
+        if let error = savedQuiz.error {
+            showAlert(title: "saving error", message: "error saving: \(error.localizedDescription)")
+        } else {
+            showAlert(title: "", message: "\(quiz.quizTitle) added to collection")
+        }
+       updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
+    }
+}

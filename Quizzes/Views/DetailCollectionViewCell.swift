@@ -86,8 +86,10 @@ class DetailCollectionViewCell: UICollectionViewCell {
     private func addLabelConstrains() {
         addSubview(DetailTitleLabel)
         DetailTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        DetailTitleLabel.centerXAnchor.constraint(equalTo: DetailCollectionViewLabelImage.centerXAnchor).isActive = true
-        DetailTitleLabel.centerYAnchor.constraint(equalTo: DetailCollectionViewLabelImage.centerYAnchor).isActive = true
+        DetailTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        DetailTitleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        DetailTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        DetailTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     }
     
     private func addTexviewsConstrains() {

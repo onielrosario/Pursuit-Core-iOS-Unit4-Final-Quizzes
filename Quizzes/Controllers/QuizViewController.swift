@@ -20,6 +20,8 @@ class QuizViewController: UIViewController {
     super.viewDidLoad()
     self.collectionView.dataSource = self
     self.collectionView.delegate = self
+    self.collectionView.backgroundColor = .gray
+    self.quizes = QuizDataManager.getQuizesFromDocumentsDirectory()
   }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,21 +33,23 @@ class QuizViewController: UIViewController {
 
 extension QuizViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return quizes.count
-        return 4
+        return quizes.count
+//        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return UICollectionViewCell() }
-        
+     let quiz = quizes[indexPath.row]
+        cell.quizTitleLabel.text = quiz.name
         
         return cell
     }
     
+
     
 }
 
-extension QuizViewController: UICollectionViewDelegate {
+extension QuizViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return }
         let DetailVC = QuizDetailViewController()
@@ -54,8 +58,13 @@ extension QuizViewController: UICollectionViewDelegate {
     navigationController?.pushViewController(DetailVC, animated: true)
         
     }
+    
+
 }
 extension QuizViewController: SearchCellDelegate {
+    func saveQuiz() {
+    }
+    
     func updateQuizes(getQuizes: [QuizFile]) {
         self.quizes = getQuizes
     }

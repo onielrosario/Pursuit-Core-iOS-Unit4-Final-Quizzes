@@ -10,6 +10,7 @@ import UIKit
 
 protocol SearchCellDelegate: AnyObject {
     func updateQuizes(getQuizes: [QuizFile])
+    func saveQuiz()
 }
 
 class SearchCell: UICollectionViewCell {
@@ -33,6 +34,7 @@ class SearchCell: UICollectionViewCell {
     
     @objc private func buttonPressed() {
             self.searchCellDelegate?.updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
+        self.searchCellDelegate?.saveQuiz()
     }
     
     

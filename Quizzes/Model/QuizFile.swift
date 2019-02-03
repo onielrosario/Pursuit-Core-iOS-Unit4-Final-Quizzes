@@ -13,5 +13,5 @@ struct QuizFile: Codable {
     let id: String
     let name: String
     let facts: [String]
-    let dateAdded: Date
+    let dateAdded: String
 }
