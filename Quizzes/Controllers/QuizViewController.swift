@@ -54,15 +54,15 @@ extension QuizViewController: UICollectionViewDelegate {
     navigationController?.pushViewController(DetailVC, animated: true)
         
     }
-    
-    
-    
-    
 }
 extension QuizViewController: SearchCellDelegate {
     func updateQuizes(getQuizes: [QuizFile]) {
         self.quizes = getQuizes
     }
-    
-    
+}
+
+extension QuizViewController: CreatorDelegate {
+    func updateCollection(collection: [QuizFile]) {
+        self.quizes = collection
+    }
 }

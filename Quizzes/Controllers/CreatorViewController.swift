@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol CreatorDelegate: AnyObject {
+   func updateCollection(collection: [QuizFile])
+}
+
+
+
 class CreatorViewController: UIViewController {
+    weak var creatorDelegate: CreatorDelegate?
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var factOneTextView: UITextView!
     @IBOutlet weak var FactTwoTextView: UITextView!
@@ -23,6 +30,8 @@ class CreatorViewController: UIViewController {
 
     @objc private func create() {
         print("create pressed")
+        
+        self.creatorDelegate?.updateCollection(collection: QuizDataManager.getQuizesFromDocumentsDirectory())
     }
 
 }
