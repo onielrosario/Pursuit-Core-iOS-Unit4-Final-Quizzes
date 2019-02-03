@@ -9,7 +9,7 @@
 import UIKit
 
 class QuizDetailViewController: UIViewController {
-    public var quiz: Quiz!
+    public var quiz: QuizFile!
     
 let detailView = QuizDetailView()
     override func viewDidLoad() {
@@ -17,7 +17,7 @@ let detailView = QuizDetailView()
         self.detailView.DetailCollectionView.dataSource = self
         self.detailView.DetailCollectionView.delegate = self
     self.view.addSubview(detailView)
-        title = "\(quiz.quizTitle)"
+        title = "\(quiz.name)"
     }
   
 }
@@ -29,7 +29,7 @@ extension QuizDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as? DetailCollectionViewCell else {return UICollectionViewCell() }
-        cell.DetailTitleLabel.text = quiz.quizTitle
+        cell.DetailTitleLabel.text = quiz.name
         return cell
     }
 }

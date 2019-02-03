@@ -10,7 +10,7 @@ import UIKit
 
 class QuizViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
-    private var quizes = [Quiz]() {
+    private var quizes = [QuizFile]() {
         didSet {
                 self.collectionView.reloadData()
         }
@@ -20,9 +20,13 @@ class QuizViewController: UIViewController {
     super.viewDidLoad()
     self.collectionView.dataSource = self
     self.collectionView.delegate = self
-  
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.collectionView.reloadData()
+    }
 }
+
 
 
 extension QuizViewController: UICollectionViewDataSource {
@@ -52,6 +56,13 @@ extension QuizViewController: UICollectionViewDelegate {
     }
     
     
+    
+    
+}
+extension QuizViewController: SearchCellDelegate {
+    func updateQuizes(getQuizes: [QuizFile]) {
+        self.quizes = getQuizes
+    }
     
     
 }

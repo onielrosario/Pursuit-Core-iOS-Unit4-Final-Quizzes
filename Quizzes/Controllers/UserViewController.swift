@@ -13,7 +13,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var userName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        userimage.layer.cornerRadius  = userimage.frame.width / 2
+    userimage.layer.cornerRadius  = userimage.frame.width / 2
         userimage.clipsToBounds = true
     }
     

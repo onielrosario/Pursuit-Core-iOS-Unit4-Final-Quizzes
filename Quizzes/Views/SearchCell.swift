@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol SearchCellDelegate: AnyObject {
+    func updateQuizes(getQuizes: [QuizFile])
+}
+
 class SearchCell: UICollectionViewCell {
+    weak var searchCellDelegate: SearchCellDelegate?
     lazy var SearchCellButton: UIButton = {
         let myButton = UIButton()
         myButton.setImage(UIImage(named: "add"), for: .normal)
@@ -27,7 +32,7 @@ class SearchCell: UICollectionViewCell {
     
     
     @objc private func buttonPressed() {
-        print("im active")
+            self.searchCellDelegate?.updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
     }
     
     
