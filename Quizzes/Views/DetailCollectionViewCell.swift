@@ -9,20 +9,17 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
-   var isFlipped = false
-   
+    var isFlipped = false
     lazy var DetailCollectionViewLabelImage: UIImageView = {
         let imageview = UIImageView()
         backgroundColor = .white
         return imageview
     }()
-    
     lazy var DetailCollectionViewTextviewsImage: UIImageView = {
         let imageview = UIImageView()
         backgroundColor = .white
         return imageview
     }()
-    
     lazy var DetailCellTextViewOne: UITextView = {
         let myTextView = UITextView()
         myTextView.textColor = .white
@@ -33,7 +30,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
         myTextView.isSelectable = false
         return myTextView
     }()
-    
     lazy var DetailCellTextViewTwo: UITextView = {
         let myTextView = UITextView()
         myTextView.textColor = .black
@@ -43,7 +39,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
         myTextView.isSelectable = false
         return myTextView
     }()
-    
     lazy var DetailTitleLabel: UILabel = {
         let mylabel = UILabel()
         mylabel.textAlignment = .center
@@ -52,13 +47,10 @@ class DetailCollectionViewCell: UICollectionViewCell {
         mylabel.textColor = .black
         return mylabel
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         backgroundColor = .white
         commonInit()
-        
-   
     }
     
     func flipBack() {
@@ -66,7 +58,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     }
     
     func flipCell() {
-         UIView.transition(from: DetailTitleLabel, to: DetailTitleLabel, duration: 0.5, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
+        UIView.transition(from: DetailTitleLabel, to: DetailTitleLabel, duration: 0.5, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,26 +67,21 @@ class DetailCollectionViewCell: UICollectionViewCell {
     
     
     private func commonInit() {
-//        addImageConstrains()
-//        addTextViewImageConstrains()
         addLabelConstrains()
         addTexviewsConstrains()
     }
-    
     private func addImageConstrains() {
         addSubview(DetailCollectionViewLabelImage)
         DetailCollectionViewLabelImage.translatesAutoresizingMaskIntoConstraints = false
         DetailCollectionViewLabelImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         DetailCollectionViewLabelImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
-    
     private func addTextViewImageConstrains() {
         addSubview(DetailCollectionViewTextviewsImage)
         DetailCollectionViewTextviewsImage.translatesAutoresizingMaskIntoConstraints = false
         DetailCollectionViewTextviewsImage.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         DetailCollectionViewTextviewsImage.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
-    
     private func addLabelConstrains() {
         addSubview(DetailTitleLabel)
         DetailTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +90,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
         DetailTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         DetailTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     }
-    
     private func addTexviewsConstrains() {
         addSubview(DetailCellTextViewOne)
         DetailCellTextViewOne.translatesAutoresizingMaskIntoConstraints = false

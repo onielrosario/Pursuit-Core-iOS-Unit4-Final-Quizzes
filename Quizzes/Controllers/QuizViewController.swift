@@ -23,7 +23,7 @@ class QuizViewController: UIViewController {
         self.quizes = QuizDataManager.getQuizesFromDocumentsDirectory()
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.collectionView.reloadData()
+       self.quizes = QuizDataManager.getQuizesFromDocumentsDirectory()
     }
 }
 extension QuizViewController: UICollectionViewDataSource {

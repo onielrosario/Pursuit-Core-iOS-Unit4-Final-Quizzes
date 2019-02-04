@@ -13,6 +13,10 @@ protocol SearchCellDelegate: AnyObject {
     func saveQuiz()
 }
 
+protocol SearchAlertDelegate: AnyObject {
+    func alert()
+}
+
 class SearchCell: UICollectionViewCell {
     weak var searchCellDelegate: SearchCellDelegate?
     lazy var SearchCellButton: UIButton = {
@@ -21,7 +25,6 @@ class SearchCell: UICollectionViewCell {
         myButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return myButton
     }()
-    
     lazy var searchQuizLabel: UILabel = {
         let mylabel = UILabel()
         mylabel.textAlignment = .center
@@ -30,30 +33,22 @@ class SearchCell: UICollectionViewCell {
         mylabel.textColor = .black
         return mylabel
     }()
-    
-    
     @objc private func buttonPressed() {
-            self.searchCellDelegate?.updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
+        self.searchCellDelegate?.updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
         self.searchCellDelegate?.saveQuiz()
     }
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         backgroundColor = .white
         setConstrains()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func setConstrains() {
         buttonConstrains()
         labelContrains()
     }
-    
     private func buttonConstrains() {
         addSubview(SearchCellButton)
         SearchCellButton.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +57,6 @@ class SearchCell: UICollectionViewCell {
         SearchCellButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         SearchCellButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
     private func labelContrains() {
         addSubview(searchQuizLabel)
         searchQuizLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -71,5 +65,4 @@ class SearchCell: UICollectionViewCell {
         searchQuizLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         searchQuizLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     }
-    
 }

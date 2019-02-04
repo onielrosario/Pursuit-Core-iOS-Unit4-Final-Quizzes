@@ -44,19 +44,17 @@ final class QuizDataManager {
         }
         return (true, nil)
     }
-    
     static func delete(quiz: QuizFile ,atindex index: Int) {
         var quizes = getQuizesFromDocumentsDirectory()
         quizes.remove(at: index)
         let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename)
         do {
-           let data = try PropertyListEncoder().encode(quizes)
+            let data = try PropertyListEncoder().encode(quizes)
             try data.write(to: path, options: Data.WritingOptions.atomic)
         } catch {
             print("property list encoding error: \(error)")
         }
     }
-    
     static public func isSame(id: String) -> Bool {
         let index = getQuizesFromDocumentsDirectory().index{$0.id == id}
         var found = false
@@ -65,8 +63,4 @@ final class QuizDataManager {
         }
         return found
     }
-    
-    
-    
-    
 }

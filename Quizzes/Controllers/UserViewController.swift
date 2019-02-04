@@ -38,7 +38,6 @@ class UserViewController: UIViewController {
             photoAlbum.sourceType = .photoLibrary
             present(photoAlbum, animated: true, completion: nil)
         }
-        
     }
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -21,30 +21,20 @@ class SearchQuizzesView: UIView {
         myCollectionView.register(SearchCell.self, forCellWithReuseIdentifier: "searchCell")
         return myCollectionView
     }()
-  
-    
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commoninit()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     private func commoninit() {
         addSearchCollectionConstrains()
     }
-    
-    
-    
     private func addSearchCollectionConstrains() {
         addSubview(SearchCollectionView)
         SearchCollectionView.translatesAutoresizingMaskIntoConstraints = false
         SearchCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         SearchCollectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
-    
 }

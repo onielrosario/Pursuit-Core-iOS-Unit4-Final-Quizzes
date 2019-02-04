@@ -14,11 +14,5 @@ final class UserDataManager {
     private init() {}
     private static let filename = "userinfo.plist"
     static func saveUser() {
-        
     }
-    
-    
-    
-    
-    
 }

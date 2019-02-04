@@ -21,24 +21,17 @@ class QuizDetailView: UIView {
         myCollectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: "detailCell")
         return myCollectionView
     }()
-    
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         CollectionViewUI()
-        
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func CollectionViewUI () {
         addSubview(DetailCollectionView)
         DetailCollectionView.translatesAutoresizingMaskIntoConstraints = false
         DetailCollectionView.widthAnchor.constraint(equalTo:self.widthAnchor).isActive = true
         DetailCollectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
-    
-    
 }
