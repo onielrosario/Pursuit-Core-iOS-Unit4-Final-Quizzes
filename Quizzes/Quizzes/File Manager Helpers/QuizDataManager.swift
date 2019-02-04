@@ -45,7 +45,7 @@ final class QuizDataManager {
         return (true, nil)
     }
     
-    static func delete(atindex index: Int) {
+    static func delete(quiz: QuizFile ,atindex index: Int) {
         var quizes = getQuizesFromDocumentsDirectory()
         quizes.remove(at: index)
         let path = DataPersistenceManager.filepathToDocumentsDiretory(filename: filename)

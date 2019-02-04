@@ -75,3 +75,17 @@ extension QuizViewController: CreatorDelegate {
         self.quizes = collection
     }
 }
+extension QuizViewController: quizCellDelegate {
+    func presentAction(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteQuiz(index: Int) {
+        let quiz = QuizDataManager.getQuizesFromDocumentsDirectory()[index]
+        QuizDataManager.delete(quiz: quiz, atindex: index)
+        self.collectionView.reloadData()
+        
+    }
+    
+    
+}

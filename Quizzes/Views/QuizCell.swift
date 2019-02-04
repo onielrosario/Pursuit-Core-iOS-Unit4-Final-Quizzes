@@ -8,11 +8,24 @@
 
 import UIKit
 
+protocol quizCellDelegate: AnyObject {
+    func deleteQuiz(index: Int)
+    func presentAction(alert: UIAlertController)
+}
+
 class QuizCell: UICollectionViewCell {
+    weak var delegate: quizCellDelegate?
     lazy var quizCollectionViewLabelImage: UIImageView = {
         let imageview = UIImageView()
        backgroundColor = .white
         return imageview
+    }()
+    
+    lazy var deleteButton: UIButton = {
+        let myButton = UIButton()
+        myButton.setImage(UIImage(named: "more"), for: .normal)
+        myButton.addTarget(self, action: #selector(deletePressed), for: .touchUpInside)
+        return myButton
     }()
     
     lazy var quizTitleLabel: UILabel = {
@@ -39,6 +52,25 @@ super.init(coder: aDecoder)
     private func commonInit() {
         addImageConstrains()
         addLabelConstrains()
+        addOptionButton()
+    }
+    
+    @objc private func deletePressed() {
+        let alertController = UIAlertController(title: "Options", message: "", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "delete", style: .destructive) {(delete) in
+            self.delegate?.deleteQuiz(index: self.deleteButton.tag)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        self.delegate?.presentAction(alert: alertController)
+    }
+    
+    private func addOptionButton() {
+        addSubview(deleteButton)
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        deleteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
     private func addImageConstrains() {
