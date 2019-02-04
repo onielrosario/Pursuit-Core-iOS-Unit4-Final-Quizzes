@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-
 struct QuizFile: Codable {
     let id: String
     let name: String

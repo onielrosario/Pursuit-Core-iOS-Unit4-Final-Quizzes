@@ -10,8 +10,7 @@ import UIKit
 
 class QuizDetailViewController: UIViewController {
     public var quiz: QuizFile!
-    
-let detailView = QuizDetailView()
+    let detailView = QuizDetailView()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(detailView)
@@ -19,21 +18,17 @@ let detailView = QuizDetailView()
         self.detailView.DetailCollectionView.delegate = self
         title = "\(quiz.name)"
     }
-  
 }
-
 extension QuizDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quiz.facts.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as? DetailCollectionViewCell else {return UICollectionViewCell() }
         cell.DetailTitleLabel.text = quiz.name
         return cell
     }
 }
-
 extension QuizDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! DetailCollectionViewCell
@@ -44,11 +39,8 @@ extension QuizDetailViewController: UICollectionViewDelegateFlowLayout {
             cell.isFlipped = true
         } else {
             cell.DetailTitleLabel.text = quiz.name
-             cell.isFlipped = false
-             cell.flipBack()
+            cell.isFlipped = false
+            cell.flipBack()
         }
-      
-      
     }
-
 }

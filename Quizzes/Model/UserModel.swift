@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-
 struct User: Codable {
     let imageData: Data
     let userName: String

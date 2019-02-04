@@ -14,19 +14,17 @@ class SearchViewController: UIViewController {
     private var quizes = [Quiz]() {
         didSet {
             DispatchQueue.main.async {
-               self.searchView.SearchCollectionView.reloadData()
+                self.searchView.SearchCollectionView.reloadData()
             }
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-self.view.addSubview(searchView)
-    searchView.SearchCollectionView.dataSource = self
-    searchView.SearchCollectionView.delegate = self
-      getQuizes()
+        self.view.addSubview(searchView)
+        searchView.SearchCollectionView.dataSource = self
+        searchView.SearchCollectionView.delegate = self
+        getQuizes()
     }
-    
     private func getQuizes() {
         quizAPIClient.getWeather { (error, quizes) in
             if let error = error {
@@ -36,36 +34,28 @@ self.view.addSubview(searchView)
             }
         }
     }
-    
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { alert in }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
-
 }
-
-
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quizes.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as? SearchCell else { return UICollectionViewCell() }
         let quiz = quizes[indexPath.row]
         cell.searchQuizLabel.text = quiz.quizTitle
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) is SearchCell else { return }
-       index = indexPath.row
+        index = indexPath.row
         saveQuiz()
     }
-    
-  
 }
 
 
@@ -88,6 +78,6 @@ extension SearchViewController: SearchCellDelegate {
         } else {
             showAlert(title: "", message: "\(quiz.quizTitle) added to collection")
         }
-       updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
+        updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
     }
 }

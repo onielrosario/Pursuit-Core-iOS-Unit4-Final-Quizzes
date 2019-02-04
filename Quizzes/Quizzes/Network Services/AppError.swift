@@ -14,7 +14,6 @@ enum AppError: Error {
   case networkError(Error)
   case badStatusCode(String)
   case propertyListEncodingError(Error)
-  
   public func errorMessage() -> String {
     switch self {
     case .badURL(let message):
