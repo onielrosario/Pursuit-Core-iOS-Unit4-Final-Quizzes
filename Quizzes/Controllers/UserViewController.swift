@@ -25,6 +25,12 @@ class UserViewController: UIViewController {
     userimage.layer.cornerRadius  = userimage.frame.width / 2
         userimage.clipsToBounds = true
         imagePickerView()
+        userName.isEnabled = true
+        if let username = userName.text {
+            if username == "Username" {
+             
+            }
+        }
         
     }
     private func imagePickerView() {

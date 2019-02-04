@@ -12,9 +12,12 @@ protocol CreatorDelegate: AnyObject {
    func updateCollection(collection: [QuizFile])
 }
 
-
+protocol UserIsEmptyDelegate: AnyObject {
+    func isUsernameEmpty()
+}
 
 class CreatorViewController: UIViewController {
+    
     weak var creatorDelegate: CreatorDelegate?
     @IBOutlet weak var TitleTextField: UITextField!
     @IBOutlet weak var factOneTextView: UITextView!
@@ -24,6 +27,7 @@ class CreatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
  self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Create", style: .plain, target: self, action: #selector(create))
     }
     
@@ -62,3 +66,5 @@ class CreatorViewController: UIViewController {
     }
 
 }
+
+

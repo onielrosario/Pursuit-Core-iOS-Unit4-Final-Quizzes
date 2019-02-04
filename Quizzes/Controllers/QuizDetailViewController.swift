@@ -36,9 +36,18 @@ extension QuizDetailViewController: UICollectionViewDataSource {
 
 extension QuizDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as? DetailCollectionViewCell else { return }
-       let view = cell.contentView
-       UIView.transition(from: view, to: view, duration: 0.1, options: [.transitionFlipFromRight])
+        let cell = collectionView.cellForItem(at: indexPath) as! DetailCollectionViewCell
+        if cell.isFlipped == false {
+            cell.DetailTitleLabel.text = quiz.facts.first
+            cell.flipCell()
+            cell.isFlipped = true
+        } else {
+            cell.DetailTitleLabel.text = quiz.name
+             cell.isFlipped = false
+             cell.flipBack()
+        }
+      
+      
     }
 
 }

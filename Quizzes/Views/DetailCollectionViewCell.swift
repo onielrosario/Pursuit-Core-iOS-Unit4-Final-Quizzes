@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
+   var isFlipped = false
    
     lazy var DetailCollectionViewLabelImage: UIImageView = {
         let imageview = UIImageView()
@@ -47,6 +48,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         let mylabel = UILabel()
         mylabel.textAlignment = .center
         mylabel.text = "Quiz title..."
+        mylabel.numberOfLines = 3
         mylabel.textColor = .black
         return mylabel
     }()
@@ -55,6 +57,16 @@ class DetailCollectionViewCell: UICollectionViewCell {
         super.init(frame: UIScreen.main.bounds)
         backgroundColor = .white
         commonInit()
+        
+   
+    }
+    
+    func flipBack() {
+        UIView.transition(from: DetailTitleLabel, to: DetailTitleLabel, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+    }
+    
+    func flipCell() {
+         UIView.transition(from: DetailTitleLabel, to: DetailTitleLabel, duration: 0.5, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
