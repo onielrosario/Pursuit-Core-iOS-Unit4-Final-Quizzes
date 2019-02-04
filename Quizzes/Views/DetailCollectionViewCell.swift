@@ -48,7 +48,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         let mylabel = UILabel()
         mylabel.textAlignment = .center
         mylabel.text = "Quiz title..."
-        mylabel.numberOfLines = 3
+        mylabel.numberOfLines = 8
         mylabel.textColor = .black
         return mylabel
     }()

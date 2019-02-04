@@ -37,8 +37,9 @@ extension QuizDetailViewController: UICollectionViewDataSource {
 extension QuizDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! DetailCollectionViewCell
+        let fact = quiz.facts[indexPath.row]
         if cell.isFlipped == false {
-            cell.DetailTitleLabel.text = quiz.facts.first
+            cell.DetailTitleLabel.text = fact
             cell.flipCell()
             cell.isFlipped = true
         } else {
