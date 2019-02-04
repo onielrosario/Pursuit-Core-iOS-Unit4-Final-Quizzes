@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class UserViewController: UIViewController {
     @IBOutlet weak var userimage: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -36,6 +38,13 @@ class UserViewController: UIViewController {
             present(photoAlbum, animated: true, completion: nil)
         }
        
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { alert in }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     
