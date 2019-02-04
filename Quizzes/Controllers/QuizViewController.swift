@@ -41,7 +41,7 @@ extension QuizViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "quizCell", for: indexPath) as? QuizCell else { return UICollectionViewCell() }
      let quiz = quizes[indexPath.row]
         cell.quizTitleLabel.text = quiz.name
-        
+        cell.delegate = self
         return cell
     }
     
@@ -83,7 +83,7 @@ extension QuizViewController: quizCellDelegate {
     func deleteQuiz(index: Int) {
         let quiz = QuizDataManager.getQuizesFromDocumentsDirectory()[index]
         QuizDataManager.delete(quiz: quiz, atindex: index)
-        self.collectionView.reloadData()
+        updateQuizes(getQuizes: QuizDataManager.getQuizesFromDocumentsDirectory())
         
     }
     
