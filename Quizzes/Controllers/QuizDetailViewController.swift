@@ -17,7 +17,6 @@ let detailView = QuizDetailView()
         self.view.addSubview(detailView)
         self.detailView.DetailCollectionView.dataSource = self
         self.detailView.DetailCollectionView.delegate = self
-//    self.view.addSubview(detailView)
         title = "\(quiz.name)"
     }
   
@@ -40,7 +39,6 @@ extension QuizDetailViewController: UICollectionViewDelegateFlowLayout {
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as? DetailCollectionViewCell else { return }
        let view = cell.contentView
        UIView.transition(from: view, to: view, duration: 0.1, options: [.transitionFlipFromRight])
-    
     }
 
 }
